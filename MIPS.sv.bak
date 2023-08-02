@@ -1,0 +1,129 @@
+module MIPS (
+input logic clk,
+output reg alu
+);
+
+PC counter(
+.clk(),
+.ld(),
+.clr(),
+.up(),
+.data_in(),
+.data_out());
+
+asyncmemROM ROM (
+.raddr(),   
+.waddr(),    
+.Data_in(), 
+.wen(),                  
+.ren(),
+.data_out());
+
+Reg_Bank #(.WL(16),.AL(4))
+Reg_Bank0(
+	.clk(clk), 
+	.wr_en(),
+	.rd1_en(),
+	.rd2_en(),
+	.w_addr(), 
+	.r_addr1(),
+	.r_addr2(),
+	.w_data(),
+	.r_data1(),
+	.r_data2()
+);
+
+asyncmemROM 
+INSmemory(
+.raddr(),
+.waddr('0),
+.Data_in('0),
+.wen(1'b0),
+.ren(),
+.clk('0),
+.data_out()
+);
+
+asyncmem 
+RAM(.raddr(),
+.waddr(),
+.Data_in(),
+.wen(),
+.ren(),
+.clk(clk),
+.data_out()
+);
+
+ sign extender(
+.in(),
+.out());
+
+shift_r instr(
+.in(),
+.out() );
+
+shift_r jump(
+.in(),
+.out() );
+
+control control_unit(
+.opcode(),
+.jump(),
+.branch(),
+.MemRead(),
+.MemtoReg(),
+.MemWrite(),
+.ALUSrc(),
+.RegWrite(),
+.RegDst(),
+.ALUOp());
+
+alu Alu(
+.a(),
+.b(),
+.alu_in(),
+.zero(),
+.alu_out());
+
+alu_control M2(
+.aluop(),
+.instr(), 
+.alu_in();
+
+mux_ mux1(
+.in_0(),
+.in_1(),
+.sel(),
+.out()
+);
+mux_ mux2(
+.in_0(),
+.in_1(),
+.sel(),
+.out()
+);
+mux_ mux3(
+.in_0(),
+.in_1(),
+.sel(),
+.out()
+);
+mux_ mux4(
+.in_0(),
+.in_1(),
+.sel(),
+.out()
+);
+mux_ mux5(
+.in_0(),
+.in_1(),
+.sel(),
+.out()
+);
+
+
+
+
+endmodule
+
+

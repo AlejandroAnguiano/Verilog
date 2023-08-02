@@ -1,0 +1,8 @@
+module alu_control(
+input [2:0] aluop,
+input [5:0] instr, 
+output logic [1:0] alu_in);
+
+endmodule 
+
+

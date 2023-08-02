@@ -1,0 +1,13 @@
+module control(
+input [5:0] opcode,
+//
+output logic jump,
+output logic branch,
+output logic MemRead,
+output logic MemtoReg,
+output logic MemWrite,
+output logic ALUSrc,
+output logic RegWrite,
+output logic RegDst,
+output logic [2:0] ALUOp)
+;

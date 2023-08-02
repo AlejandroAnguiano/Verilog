@@ -1,0 +1,15 @@
+module mux_(
+
+input logic [31:0] in_0,
+input logic [31:0] in_1,
+
+input logic sel,
+
+output logic [31:0] out
+);
+
+assign out = s ? in_0:in_1;
+
+endmodule 
+
+
